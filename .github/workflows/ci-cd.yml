@@ -34,5 +34,5 @@ jobs:
           memory_size: 128
           timeout: 10
           handler: index
-          role: arn:aws:iam::${{secrets.AWS_IAM_ID}}:${{secrets.AWS_IAM_ROLE}}/${{secrets.AWS_IAM_NAME}}
+          role: ${{secrets.IAM_ROLE}}
           runtime: nodejs16.x
