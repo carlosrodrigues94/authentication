@@ -20,7 +20,7 @@ jobs:
 
       - name: Build
         run: |
-          npm install && npm run build && zip -r lambdas/generateToken.zip dist
+          npm install && npm run build && mv node_modules dist/node_modules && cd dist && zip -r ../lambdas/generateToken.zip .
 
       - name: Deploy to AWS Lambda
         uses: appleboy/lambda-action@v0.1.9
