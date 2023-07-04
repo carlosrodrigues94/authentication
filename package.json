@@ -19,11 +19,11 @@
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/carlosrodrigues94/authentication/issues"
+    "url": "git@github.com:carlosrodrigues94/authentication-lambda-function/issues"
   },
-  "homepage": "https://github.com/carlosrodrigues94/authentication#readme",
+  "homepage": "git@github.com:carlosrodrigues94/authentication-lambda-function#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/carlosrodrigues94/authentication.git"
+    "url": "git+git@github.com:carlosrodrigues94/authentication-lambda-function.git"
   }
 }
