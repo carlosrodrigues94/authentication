@@ -8,6 +8,7 @@ jobs:
   deploy_zip:
     name: Deploy authentication function
     runs-on: ubuntu-latest
+    environment: deploy
 
     steps:
       - name: Checkout source code
