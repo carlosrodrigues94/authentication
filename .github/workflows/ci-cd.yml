@@ -1,0 +1,37 @@
+name: Deploy to Lambda
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_zip:
+    name: Deploy authentication function
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Build
+        run: |
+          npm install && npm run build && zip -r generateToken.zip .
+
+      - name: Deploy to AWS Lambda
+        uses: appleboy/lambda-action@v0.1.9
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: generateToken
+          zip_file: lambdas/generateToken.zip
+          memory_size: 128
+          timeout: 10
+          handler: index
+          role: arn:aws:iam::${{secrets.AWS_IAM_ID}}:${{secrets.AWS_IAM_ROLE}}/${{secrets.AWS_IAM_NAME}}
+          runtime: nodejs16.x
